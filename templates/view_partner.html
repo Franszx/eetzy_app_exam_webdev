@@ -1,0 +1,18 @@
+{% include "_top_logged.html" %}
+
+<main class="w-full d-flex j-content-center p-items-center gap-4 mx-auto bg-c-orchid:-8">
+  <div class="d-flex flex-col p-items-center gap-4 p-items-center">
+    <div class="w-full">
+      <h3>Welcome</h3>
+      <h1>{{ user["user_name"] }} {{ user["user_last_name"] }}</h1>
+    </div>
+    <div class="d-flex flex-col gap-4 my-auto p-items-center">
+      <a href="#" class="d-flex a-items-center j-content-center h-12 w-100% px-10 rounded-4 border border-1 bg-c-green text-c-white">Customer</a>
+      <a href="{{url_for('view_choose_role')}}" class="d-flex a-items-center j-content-center h-12 w-100% px-10 rounded-4 border border-1 bg-c-green text-c-white">Back</a>
+
+      <!-- <a href="{{ url_for('show_reset_password', reset_key=reset_key) }}" class="d-flex a-items-center j-content-center h-12 w-100% px-10 rounded-4 border border-1 bg-c-green text-c-white">Reset password</a> -->
+    </div>
+  </div>
+</main>
+
+{% include "_bottom.html" %}

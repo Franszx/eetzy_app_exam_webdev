@@ -1,0 +1,73 @@
+{% include "_top_logged.html" %}
+
+<main class="w-full d-flex flex-col j-content-center p-items-center gap-4 mx-auto bg-c-blue:+16">
+  <section class="d-flex flex-col p-items-center gap-4 p-items-center">
+    <div class="w-full">
+      <h3>Welcome</h3>
+      <h1>{{ user["user_name"] }} {{ user["user_last_name"] }}</h1>
+    </div>
+    <div class="d-flex flex-col gap-4 my-auto p-items-center">
+      <a href="#" class="d-flex a-items-center j-content-center h-12 w-100% px-10 rounded-4 border border-1 bg-c-green text-c-white">Info</a>
+      <a href="{{url_for('view_choose_role')}}" class="d-flex a-items-center j-content-center h-12 w-100% px-10 rounded-4 border border-1 bg-c-green text-c-white">Back</a>
+      <!-- <a href="{{ url_for('show_reset_password', reset_key=reset_key) }}" class="d-flex a-items-center j-content-center h-12 w-100% px-10 rounded-4 border border-1 bg-c-green text-c-white">Reset password</a> -->
+    </div>
+  </section>
+  <a href="{{url_for('show_items')}}" class="text-a-center">Add items</a>
+  <section class="w-50% mt-8">
+    <h2>Restaurant Profile</h2>
+    <form method="POST" action="#" class="d-flex flex-col gap-2">
+      <label for="name">Restaurant Name</label>
+      <input type="text" id="name" name="name" value="" required />
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description"></textarea>
+
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" value="" />
+
+      <label for="contact">Contact Information</label>
+      <input type="text" id="contact" name="contact" value="" />
+
+      <button type="submit" class="btn-primary">Save Changes</button>
+    </form>
+  </section>
+  <section class="w-50% mt-8 d-flex flex-col">
+    <h2>Add New Menu Item</h2>
+    <form method="POST" action="" enctype="multipart/form-data" class="d-flex flex-col gap-2">
+      <label for="item_title">Item Name</label>
+      <input type="text" id="item_title" name="item_title" required />
+
+      <label for="item_description">Description</label>
+      <textarea id="item_description" name="item_description"></textarea>
+
+      <label for="item_price">Price</label>
+      <input type="number" id="item_price" name="item_price" required />
+
+      <label for="item_image">Upload Image</label>
+      <input type="file" id="item_image" name="item_image" accept="image/*" />
+
+      <button type="submit" class="btn-primary">Add Item</button>
+    </form>
+  </section>
+  <section class="w-50% mt-8">
+    <h2>Manage Menu Items</h2>
+    <ul class="item-list">
+      {% for item in restaurant_items %}
+      <li class="d-flex j-content-between a-items-center">
+        <div class="item-info">
+          <img src="" alt="" class="item-img" />
+          <h3>{{ item.item_title }}</h3>
+          <p>{{ item.item_description }}</p>
+          <span>{{ item.item_price }} USD</span>
+        </div>
+        <div class="item-actions">
+          <a href="" class="btn-edit">Edit</a>
+          <a href="" class="btn-delete">Delete</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</main>
+
+{% include "_bottom.html" %}
